@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAGARNUSA UNUSIA - Blue Theme Enhanced</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #0b4f8d; 
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #87CEEB 0%, #0b4f8d 100%);
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Efek pencahayaan lembut di background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+      transform: translateX(-50%);
+      z-index: 0;
+      filter: blur(100px);
+      animation: glowMove 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowMove {
+      0% { top: -150px; left: 40%; opacity: 0.8; }
+      100% { top: -50px; left: 60%; opacity: 0.6; }
+    }
+
+    /* =========================
+       NAVBAR RESPONSIVE + STICKY
+    ==========================*/
+    .navbar {
+      width: 100%;
+      background: rgba(12, 61, 108, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 12px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-shadow: 0 0 20px rgba(12, 61, 108, 0.5);
+      transition: transform 0.4s ease;
+    }
+
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .logo {
+      height: 45px;
+      width: 45px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .logo:hover {
+      transform: rotate(10deg) scale(1.1);
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+    }
+
+    .navbar h1 {
+      font-size: 1.1rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.4);
+    }
+
+    .navbar h1 span {
+      color: #1e90ff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        height: 38px;
+        width: 38px;
+      }
+      .navbar h1 {
+        font-size: 1rem;
+      }
+    }
+
+    /* =========================
+       HERO SECTION
+    ==========================*/
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: 60px; /* offset dari navbar sticky */
+    }
+
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(12, 61, 108, 0.7);
+      z-index: 1;
+    }
+
+    /* Silhouette animasi pencak silat */
+    .fighter {
+      position: absolute;
+      bottom: 10%;
+      left: -150px;
+      width: 150px;
+      height: 150px;
+      background: url('fighter-silhouette.png') no-repeat center/contain;
+      opacity: 0.6;
+      animation: fighterMove 12s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fighterMove {
+      0% { left: -150px; transform: scaleX(1); }
+      50% { left: calc(100% + 150px); transform: scaleX(1); }
+      51% { transform: scaleX(-1); }
+      100% { left: -150px; transform: scaleX(-1); }
+    }
+
+    /* Konten tengah */
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
+      padding: 0 20px;
+    }
+
+    .content h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 25px;
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px #fff, 0 0 20px #0b4f8d, 0 0 40px #0b4f8d; }
+      100% { text-shadow: 0 0 20px #fff, 0 0 40px #1e90ff, 0 0 60px #1e90ff; }
+    }
+
+    /* Tombol animasi */
+    .btn {
+      background-color: white;
+      color: #0c3d6c;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 40px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: "➜";
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover::after {
+      transform: translateX(8px);
+    }
+
+    .btn:hover {
+      background-color: #0c3d6c;
+      color: white;
+      box-shadow: 0 0 30px rgba(30,144,255,0.8);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0c3d6c;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: white;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 -5px 20px rgba(12, 61, 108, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-content">
+      <img src="ukm.png" alt="Logo" class="logo">
+      <h1>UKM PENCAK SILAT<br><span>UNUSIA</span></h1>
+    </div>
+  </div>
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="bg.mp4" type="video/mp4">
+      Browser Anda tidak mendukung video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="fighter"></div>
+    <div class="content">
+      <h2>Bergabung Bersama Kami!</h2>
+      <a href="https://forms.gle/c1amQVrUXBZueaXFA" class="btn">Daftar Sekarang</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 UKM Pencak Silat UNUSIA. All rights reserved.
+  </footer>
+
+</body>
+</html>
